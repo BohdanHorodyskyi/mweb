@@ -1,0 +1,97 @@
+<div>
+    <p class="type_name">Deal Type:</p>
+    <div class="d-flex">
+        <div *ngFor="let capmaignName of capmaignNames">
+            <button (click)="filterCampaign(capmaignName)" class="btn bg-primary p-3 px-5 me-4">
+                <p class="mb-1 text-white">
+                    {{capmaignName.name}}
+                </p>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="mt-5 d-flex flex-wrap justify-content-between">
+        <div class="product mt-3 shadow" *ngFor='let item of arrayWithProducts'>
+            <div class="d-flex">
+                <div class="product_text">
+                    <div class="product_name mb-2">{{item.productName}}</div>
+                    <div class="product_price mt-4">R{{item.productRate}}PM</div>
+                </div>
+                <div *ngIf="getImage(item.subcategory)" class="main_icon"
+                    [style.background-image]="'url(' + image + ')'"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="filter_name">Choose provider</p>
+<div class="d-flex justify-content-around flex-wrap mt-5">
+    <div *ngFor="let icon of icons">
+        <a (click)="selectProvider(icon)" href='#'>
+            <div [style.background-image]="'url(' + icon.url + ')'" class="icon"></div>
+        </a>
+    </div>
+</div>
+
+<div class="mt-5 d-flex flex-wrap justify-content-between mb-5">
+    <div class="product mt-3 shadow d-flex wrap" *ngFor='let item of products'>
+        <div class="d-flex">
+            <div class="product_text">
+                <div class="product_name mb-2">{{item.productName}}</div>
+                <div class="product_price mt-4">R{{item.productRate}}PM</div>
+            </div>
+            <div *ngIf="getImage(item.subcategory)" class="main_icon" [style.background-image]="'url(' + image + ')'">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class=" mb-5">
+    <p class="filter_name m-o">Filter by:</p>
+    <div class="d-flex">
+        <div class="dropdown1">
+            <div *ngFor="let item of priceRangers">
+                <a>
+                    class="filter_item main-radius d-block text-decoration-none">{{item.label}}</a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="dropdown d-flex">
+            <button class="position-relative align-items-center d-flex btn px-4 p-3 shadow border-dark">
+                <div class="lh-1 text-secondary fs-5">
+                    Price
+                </div>
+                <img class="arrow ms-2 mt-2" src="/assets/arr.png" alt="">
+            </button>
+
+            <div class="dropdown1">
+                <div *ngFor="let item of priceRangers">
+                    <a (click)="choosePrice(item)"
+                        class="filter_item main-radius d-block text-decoration-none">{{item.label}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="products mt-5">
+    <div class="d-flex flex-wrap justify-content-between">
+        <div class="product shadow d-flex wrap mt-2 mb-5" *ngFor='let item of filterProducts'>
+            <div class="d-flex">
+                <div class="product_text">
+                    <div class="product_name mb-2">{{item.productName}}</div>
+                    <div class="product_price mt-4">R{{item.productRate}}PM</div>
+                </div>
+                <div *ngIf="getImage(item.subcategory)" class="main_icon"
+                    [style.background-image]="'url(' + image + ')'">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
